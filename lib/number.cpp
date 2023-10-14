@@ -2,7 +2,7 @@
 
 const int kNumbers = 252;
 
-bool ZeroBuff(const char* buff, const unsigned long buff_length);
+bool ZeroBuff(const char* buff, unsigned long buff_length);
 
 int2023_t from_int(int32_t i) {
   int amount = 0;
@@ -256,18 +256,6 @@ int2023_t operator/(const int2023_t& lhs, const int2023_t& rhs) {
     res = -res;
 
   return res;
-}
-
-bool operator<(const int2023_t& lhs, const int2023_t& rhs) {
-  for (int i = 0; i <= kNumbers; ++i) {
-    if (lhs.bytes[i] >= rhs.bytes[i])
-      return false;
-  }
-
-  if (lhs == rhs)
-    return false;
-
-  return true;
 }
 
 bool operator==(const int2023_t& lhs, const int2023_t& rhs) {

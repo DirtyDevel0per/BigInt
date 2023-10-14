@@ -24,16 +24,14 @@ bool operator==(const int2023_t& lhs, const int2023_t& rhs);
 
 bool operator!=(const int2023_t& lhs, const int2023_t& rhs);
 
-bool operator<(const int2023_t& lhs, const int2023_t& rhs);
-
 bool operator>=(const int2023_t& lhs, const int2023_t& rhs);
 
 int2023_t operator~(const int2023_t& operand);
 
 int2023_t operator-(const int2023_t& operand);
 
-int2023_t operator<<(const int2023_t& lhs, const int rhs);
+int2023_t operator<<(const int2023_t& lhs, int rhs);
 
-int2023_t operator>>(const int2023_t& lhs, const int rhs);
+int2023_t operator>>(const int2023_t& lhs, int rhs);
 
 std::ostream& operator<<(std::ostream& stream, const int2023_t& value);
