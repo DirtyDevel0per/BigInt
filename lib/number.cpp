@@ -2,12 +2,7 @@
 
 const int kNumbers = 252;
 
-
-bool operator<(const int2023_t& lhs, const int2023_t& rhs);
-bool operator>(const int2023_t& lhs, const int2023_t& rhs);
-int2023_t operator~(const int2023_t& op);
-int2023_t operator-(const int2023_t& op);
-int2023_t operator<<(const int2023_t& lhs, const int rhs);
+bool ZeroBuff(const char* buff, const unsigned long buff_length);
 
 int2023_t from_int(int32_t i) {
   int amount = 0;
@@ -54,6 +49,7 @@ bool ZeroBuff(const char* buff, const unsigned long buff_length) {
 
   return true;
 }
+
 int2023_t from_string(const char* buff) {
   const int k_Remainder_Of_Ten_Division = 10;
   int2023_t res;
@@ -106,6 +102,7 @@ int2023_t operator+(const int2023_t& lhs, const int2023_t& rhs) {
 
   return res;
 }
+
 int2023_t operator<<(const int2023_t& lhs, const int rhs) {
   int2023_t res = lhs;
   int it = rhs;
@@ -145,6 +142,7 @@ int2023_t operator>>(const int2023_t& lhs, const int rhs) {
 
   return res;
 }
+
 int2023_t operator-(const int2023_t& op) {
   int2023_t res = op;
   if (((res.bytes[0] >> 7) & 1) == 0)
@@ -153,6 +151,7 @@ int2023_t operator-(const int2023_t& op) {
     res = ~(res - from_int(1));
   return res;
 }
+
 int2023_t operator-(const int2023_t& lhs, const int2023_t& rhs) {
   int2023_t res;
 
@@ -201,7 +200,7 @@ int2023_t operator*(const int2023_t& lhs, const int2023_t& rhs) {
   return res;
 }
 
-bool operator>=(const int2023_t& lhs, const int2023_t rhs) {
+bool operator>=(const int2023_t& lhs, const int2023_t& rhs) {
 
   for (int i = 0; i <= kNumbers; ++i) {
     if (lhs.bytes[i] > rhs.bytes[i])
@@ -271,14 +270,6 @@ bool operator<(const int2023_t& lhs, const int2023_t& rhs) {
   if (lhs == rhs)
     return false;
 
-  return true;
-}
-
-bool operator>(const int2023_t& lhs, const int2023_t& rhs) {
-  for (int i = 0; i <= kNumbers; ++i) {
-    if (lhs.bytes[i] <= rhs.bytes[i])
-      return false;
-  }
   return true;
 }
 
