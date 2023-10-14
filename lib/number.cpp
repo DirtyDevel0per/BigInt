@@ -28,10 +28,8 @@ int2023_t from_int(int32_t i) {
 
 int2023_t operator~(const int2023_t& operand) {
   int2023_t res;
-  int amount = 0;
 
   for (int i = kNumbers; i >= 0; --i) {
-    amount = 0;
     res.bytes[i] = ~operand.bytes[i];
   }
 
@@ -53,7 +51,7 @@ bool ZeroBuff(const char* buff, const unsigned long buff_length) {
 int2023_t from_string(const char* buff) {
   const int k_Remainder_Of_Ten_Division = 10;
   int2023_t res;
-  int remainder_of_two_division = 0;
+  int remainder_of_two_division;
   int amount = 0;
   bool flag = false;
   unsigned long buff_length = std::strlen(buff);
@@ -91,7 +89,6 @@ int2023_t from_string(const char* buff) {
 }
 
 int2023_t operator+(const int2023_t& lhs, const int2023_t& rhs) {
-  int amount = 0;
   int remainder = 0;
   int2023_t res;
 
@@ -106,8 +103,8 @@ int2023_t operator+(const int2023_t& lhs, const int2023_t& rhs) {
 int2023_t operator<<(const int2023_t& lhs, const int rhs) {
   int2023_t res = lhs;
   int it = rhs;
-  int tmp_next = 0;
-  int tmp_cur = 0;
+  int tmp_next;
+  int tmp_cur;
 
   while (it > 0) {
     tmp_next = 0;
@@ -126,8 +123,8 @@ int2023_t operator<<(const int2023_t& lhs, const int rhs) {
 int2023_t operator>>(const int2023_t& lhs, const int rhs) {
   int2023_t res = lhs;
   int it = rhs;
-  int tmp_next = 0;
-  int tmp_cur = 0;
+  int tmp_next;
+  int tmp_cur;
 
   while (it > 0) {
     tmp_next = 0;
@@ -182,10 +179,10 @@ int2023_t operator*(const int2023_t& lhs, const int2023_t& rhs) {
   if (lhs == from_int(1))
     return rhs;
 
-  if (lhs_tmp < rhs_tmp) {
+  if (!(lhs_tmp >= rhs_tmp)) {
     tmp = lhs_tmp;
     lhs_tmp = rhs_tmp;
-    rhs_tmp = lhs_tmp;
+    rhs_tmp = tmp;
   }
 
   while (amount <= kNumbers * 8) {
@@ -213,7 +210,7 @@ bool operator>=(const int2023_t& lhs, const int2023_t& rhs) {
 }
 
 int2023_t operator/(const int2023_t& lhs, const int2023_t& rhs) {
-  int2023_t res, lhs_tmp = lhs, rhs_tmp = rhs, div_tmp, remainder;
+  int2023_t res, lhs_tmp = lhs, rhs_tmp = rhs, remainder;
   int cnt = (kNumbers + 1) * 8;
   bool flag_rhs = false;
   bool flag_lhs = false;
@@ -254,7 +251,7 @@ int2023_t operator/(const int2023_t& lhs, const int2023_t& rhs) {
     }
     --cnt;
   }
-  bool k = remainder >= rhs_tmp;
+
   if (flag_rhs != flag_lhs)
     res = -res;
 
@@ -290,7 +287,7 @@ bool operator!=(const int2023_t& lhs, const int2023_t& rhs) {
 
 std::ostream& operator<<(std::ostream& stream, const int2023_t& value) {
   int2023_t res = value;
-  int amount = 0;
+  int amount;
 
   if (value.bytes[0] & (1 << 7)) {
     res = -res;
