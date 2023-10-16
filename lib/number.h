@@ -3,6 +3,7 @@
 #include <iostream>
 
 struct int2023_t {
+  static const int kNumbers = 252;
   uint8_t bytes[253]{0};
 };
 
