@@ -47,7 +47,7 @@ bool ZeroBuff(const char* buff, const unsigned long buff_length) {
 }
 
 int2023_t from_string(const char* buff) {
-  const int k_Remainder_Of_Ten_Division = 10;
+  const int kRemainderOfTenDivision = 10;
   int2023_t res;
   int remainder_of_two_division;
   int amount = 0;
@@ -69,7 +69,7 @@ int2023_t from_string(const char* buff) {
     for (unsigned long i = 0; i < buff_length; i++) {
       if (remainder_of_two_division) {
         remainder_of_two_division = (tmp_buf[i] - '0') % 2;
-        tmp_buf[i] = ((tmp_buf[i] - '0') + k_Remainder_Of_Ten_Division) / 2 + '0';
+        tmp_buf[i] = ((tmp_buf[i] - '0') + kRemainderOfTenDivision) / 2 + '0';
       }
       else {
         remainder_of_two_division = (tmp_buf[i] - '0') % 2;

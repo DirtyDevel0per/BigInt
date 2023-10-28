@@ -9,6 +9,7 @@ project(
 
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "-O3")
 
 add_subdirectory(lib)
 add_subdirectory(bin)
